@@ -7,6 +7,6 @@ export function grossPayMinor(rateMinor: number, days: number): number {
 /** A label for the builder's own gross pay. INR minor units are paise: 100 per rupee. */
 export function grossPayLabel(rateMinor: number, days: number): string {
   const minor = grossPayMinor(rateMinor, days);
-  // BUG (deliberate, the task): paise are 1/100 of a rupee, not 1/10.
-  return `₹${(minor / 10).toFixed(2)}`;
+  // Fixed: paise are 1/100 of a rupee.
+  return `₹${(minor / 100).toFixed(2)}`;
 }
